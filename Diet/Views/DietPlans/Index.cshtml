@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Diet.Models.DietPlan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CalorieLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PotentialFood)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Food)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calories)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxCal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinCal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalorieLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PotentialFood)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Food)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Calories)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxCal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinCal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
