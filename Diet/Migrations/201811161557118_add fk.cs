@@ -3,7 +3,7 @@ namespace Diet.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addedacouplefieldsinmodels : DbMigration
+    public partial class addfk : DbMigration
     {
         public override void Up()
         {
@@ -25,60 +25,24 @@ namespace Diet.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.DietPlans",
+                "dbo.Dieters",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        CalorieLimit = c.String(),
-                        PotentialFood = c.String(),
-                        Food = c.String(),
-                        Calories = c.String(),
-                        MaxCal = c.String(),
-                        MinCal = c.String(),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.Goals",
-                c => new
-                    {
-                        LittleGoals = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => t.LittleGoals);
-            
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.Users",
-                c => new
-                    {
-                        ID = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Weight = c.String(),
                         Height = c.String(),
+                        ApplicationUserId = c.String(maxLength: 128),
+                        DietPlanId = c.Int(nullable: false),
+                        CreateDietId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
+                .ForeignKey("dbo.CreateDiets", t => t.CreateDietId, cascadeDelete: true)
+                .ForeignKey("dbo.DietPlans", t => t.DietPlanId, cascadeDelete: true)
+                .Index(t => t.ApplicationUserId)
+                .Index(t => t.DietPlanId)
+                .Index(t => t.CreateDietId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -125,28 +89,80 @@ namespace Diet.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.DietPlans",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        CalorieLimit = c.String(),
+                        PotentialFood = c.String(),
+                        Food = c.String(),
+                        Calories = c.String(),
+                        MaxCal = c.String(),
+                        MinCal = c.String(),
+                        DietPlanId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.Goals",
+                c => new
+                    {
+                        LittleGoals = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.LittleGoals);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Dieters", "DietPlanId", "dbo.DietPlans");
+            DropForeignKey("dbo.Dieters", "CreateDietId", "dbo.CreateDiets");
+            DropForeignKey("dbo.Dieters", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Users");
-            DropTable("dbo.AspNetUserRoles");
+            DropIndex("dbo.Dieters", new[] { "CreateDietId" });
+            DropIndex("dbo.Dieters", new[] { "DietPlanId" });
+            DropIndex("dbo.Dieters", new[] { "ApplicationUserId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Goals");
             DropTable("dbo.DietPlans");
+            DropTable("dbo.AspNetUserRoles");
+            DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.AspNetUserClaims");
+            DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Dieters");
             DropTable("dbo.CreateDiets");
         }
     }

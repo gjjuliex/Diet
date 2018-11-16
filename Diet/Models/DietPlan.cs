@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,11 @@ namespace Diet.Models
        public string MaxCal { get; set; }
        [Display(Name = "Minimum Participants")]
        public string MinCal { get; set; }
-       
-        
+       public int DietPlanId { get; set; }
+
+      
+
+
+
     }
 }

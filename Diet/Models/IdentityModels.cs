@@ -32,7 +32,7 @@ namespace Diet.Models
         public DbSet<CreateDiet> CreateDiet { get; set; }
         public DbSet<DietPlan> DietPlan { get; set; }
         public DbSet<Goals> Goals { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<Dieter> Dieters { get; set; }
         //public object BlogPost { get; internal set; }
     }
 }

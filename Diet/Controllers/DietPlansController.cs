@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Diet.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Diet.Controllers
 {
@@ -17,23 +18,28 @@ namespace Diet.Controllers
         // GET: DietPlans
         public ActionResult Index()
         {
-            return View(db.DietPlan.ToList());
+            //return View(db.DietPlan.ToList());
+            var dietPlan = db.DietPlan.ToList();
+            return View(dietPlan);
         }
 
         // GET: DietPlans/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DietPlan dietPlan = db.DietPlan.Find(id);
-            if (dietPlan == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dietPlan);
-        }
+        //public ActionResult Details()
+        //{
+        //    //if (id == null)
+        //    //{
+        //    //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    //}
+        //    //DietPlan dietPlan = db.DietPlan.Find(id);
+        //    //if (dietPlan == null)
+        //    //{
+        //    //    return HttpNotFound();
+        //    //}
+        //    //return View(dietPlan);
+        //    var currentPlan = User.Identity.GetUserId();
+        //    var dietP = db.DietPlan.Where(d => d.)
+               
+        //}
 
         // GET: DietPlans/Create
         public ActionResult Create()

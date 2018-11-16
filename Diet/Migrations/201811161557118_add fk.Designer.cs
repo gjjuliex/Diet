@@ -7,13 +7,13 @@ namespace Diet.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedacouplefieldsinmodels : IMigrationMetadata
+    public sealed partial class addfk : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedacouplefieldsinmodels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addfk));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811151436312_added a couple fields in models"; }
+            get { return "201811161557118_add fk"; }
         }
         
         string IMigrationMetadata.Source
