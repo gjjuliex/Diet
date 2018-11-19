@@ -206,6 +206,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\DietersController.cs" />
+    <Compile Include="Controllers\MessageBoardsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,14 +218,28 @@
     <Compile Include="Migrations\201811161604525_Nevin Testing.Designer.cs">
       <DependentUpon>201811161604525_Nevin Testing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811191429308_adding.cs" />
+    <Compile Include="Migrations\201811191429308_adding.Designer.cs">
+      <DependentUpon>201811191429308_adding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811191437562_adding fk.cs" />
+    <Compile Include="Migrations\201811191437562_adding fk.Designer.cs">
+      <DependentUpon>201811191437562_adding fk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811191725183_migrate.cs" />
+    <Compile Include="Migrations\201811191725183_migrate.Designer.cs">
+      <DependentUpon>201811191725183_migrate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApiKeys.cs" />
     <Compile Include="Models\CreateDiet.cs" />
     <Compile Include="Models\DietPlan.cs" />
     <Compile Include="Models\Goals.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Dieter.cs" />
+    <Compile Include="Models\MessageBoard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -302,6 +317,17 @@
     <Content Include="Views\Dieters\Create.cshtml" />
     <Content Include="Views\Dieters\Edit.cshtml" />
     <Content Include="Views\Dieters\Index.cshtml" />
+    <Content Include="Views\MessageBoards\Create.cshtml" />
+    <Content Include="Views\MessageBoards\Delete.cshtml" />
+    <Content Include="Views\MessageBoards\Details.cshtml" />
+    <Content Include="Views\MessageBoards\Edit.cshtml" />
+    <Content Include="Views\MessageBoards\Index.cshtml" />
+    <Content Include="Views\MessageBoards\Create2.cshtml" />
+    <Content Include="Views\MessageBoards\Delete2.cshtml" />
+    <Content Include="Views\MessageBoards\Details2.cshtml" />
+    <Content Include="Views\MessageBoards\Edit2.cshtml" />
+    <Content Include="Views\MessageBoards\Index2.cshtml" />
+    <Content Include="Views\MessageBoards\Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,6 +351,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811161604525_Nevin Testing.resx">
       <DependentUpon>201811161604525_Nevin Testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191429308_adding.resx">
+      <DependentUpon>201811191429308_adding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191437562_adding fk.resx">
+      <DependentUpon>201811191437562_adding fk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191725183_migrate.resx">
+      <DependentUpon>201811191725183_migrate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,11 +19,14 @@ namespace Diet.Models
        public string Calories { get; set; }
        [Display(Name = "Maximum Calories")]
        public string MaxCal { get; set; }
-       [Display(Name = "Minimum Participants")]
+       [Display(Name = "Minimum Calories")]
        public string MinCal { get; set; }
        public int DietPlanId { get; set; }
+       [ForeignKey("ApplicationUser")]
+       public string ApplicationUserId { get; set; }
+       public ApplicationUser ApplicationUser { get; set; }
 
-      
+
 
 
 

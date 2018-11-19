@@ -33,6 +33,8 @@ namespace Diet.Models
         public DbSet<DietPlan> DietPlan { get; set; }
         public DbSet<Goals> Goals { get; set; }
         public DbSet<Dieter> Dieters { get; set; }
+
+        public System.Data.Entity.DbSet<Diet.Models.MessageBoard> MessageBoards { get; set; }
         //public object BlogPost { get; internal set; }
     }
 }

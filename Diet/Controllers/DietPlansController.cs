@@ -44,59 +44,52 @@ namespace Diet.Controllers
         // GET: DietPlans/Create
         public ActionResult Create()
         {
+            ViewBag.nutrionalKey = ApiKeys.nutritionKey;
             return View();
         }
 
-        // POST: DietPlans/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,CalorieLimit,PotentialFood,Food,Calories,MaxCal,MinCal")] DietPlan dietPlan)
         {
             if (ModelState.IsValid)
             {
+                string currentUserId = User.Identity.GetUserId();
+                dietPlan.ApplicationUserId = currentUserId;
                 db.DietPlan.Add(dietPlan);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
-
+            ViewBag.nutrionalKey = ApiKeys.nutritionKey;
             return View(dietPlan);
         }
 
         // GET: DietPlans/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DietPlan dietPlan = db.DietPlan.Find(id);
-            if (dietPlan == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dietPlan);
+            DietPlan plan = db.DietPlan.Find(id);
+            return View(plan);
         }
 
-        // POST: DietPlans/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,CalorieLimit,PotentialFood,Food,Calories,MaxCal,MinCal")] DietPlan dietPlan)
+        public ActionResult Edit([Bind(Include = "CalorieLimit,PotentialFood,Food,Calories,MaxCal,MinCal")] DietPlan dietPlan)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(dietPlan).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(dietPlan);
+            dietPlan.ApplicationUserId = User.Identity.GetUserId();
+            var editPlan = db.DietPlan.Where(p => p.ApplicationUserId == dietPlan.ApplicationUserId).SingleOrDefault();
+            editPlan.CalorieLimit = dietPlan.CalorieLimit;
+            editPlan.Calories = dietPlan.Calories;
+            editPlan.PotentialFood = dietPlan.PotentialFood;
+            editPlan.Food = dietPlan.Food;
+            editPlan.MaxCal = dietPlan.MaxCal;
+            editPlan.MinCal = dietPlan.MinCal;
+            db.SaveChanges();
+            return RedirectToAction("Details");
         }
 
         // GET: DietPlans/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -120,6 +113,15 @@ namespace Diet.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //Make the counter
+        //public int? CalorieCount(string Calories)
+        //{
+        //    var calorieCounter = db.DietPlan.Where(c => c.Calories == Calories).Select()
+
+        //}
+
+
 
         protected override void Dispose(bool disposing)
         {
