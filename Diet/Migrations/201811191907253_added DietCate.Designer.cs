@@ -7,13 +7,13 @@ namespace Diet.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class NevinTesting : IMigrationMetadata
+    public sealed partial class addedDietCate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NevinTesting));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedDietCate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811161604525_Nevin Testing"; }
+            get { return "201811191907253_added DietCate"; }
         }
         
         string IMigrationMetadata.Source

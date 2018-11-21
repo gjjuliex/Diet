@@ -38,7 +38,7 @@ namespace Diet.Controllers
         //    //return View(dietPlan);
         //    var currentPlan = User.Identity.GetUserId();
         //    var dietP = db.DietPlan.Where(d => d.)
-               
+
         //}
 
         // GET: DietPlans/Create
@@ -71,7 +71,7 @@ namespace Diet.Controllers
             return View(plan);
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CalorieLimit,PotentialFood,Food,Calories,MaxCal,MinCal")] DietPlan dietPlan)
@@ -120,16 +120,5 @@ namespace Diet.Controllers
         //    var calorieCounter = db.DietPlan.Where(c => c.Calories == Calories).Select()
 
         //}
-
-
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

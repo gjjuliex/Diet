@@ -7,13 +7,13 @@ namespace Diet.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class adding : IMigrationMetadata
+    public sealed partial class addedcattomessageboard : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(adding));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedcattomessageboard));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811191429308_adding"; }
+            get { return "201811192004538_added cat to messageboard"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,14 +3,16 @@ namespace Diet.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class adding : DbMigration
+    public partial class addedcattomessageboard : DbMigration
     {
         public override void Up()
         {
+            AddColumn("dbo.MessageBoards", "Categories", c => c.String());
         }
         
         public override void Down()
         {
+            DropColumn("dbo.MessageBoards", "Categories");
         }
     }
 }

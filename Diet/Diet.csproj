@@ -210,25 +210,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811161557118_add fk.cs" />
-    <Compile Include="Migrations\201811161557118_add fk.Designer.cs">
-      <DependentUpon>201811161557118_add fk.cs</DependentUpon>
+    <Compile Include="Migrations\201811191907253_added DietCate.cs" />
+    <Compile Include="Migrations\201811191907253_added DietCate.Designer.cs">
+      <DependentUpon>201811191907253_added DietCate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811161604525_Nevin Testing.cs" />
-    <Compile Include="Migrations\201811161604525_Nevin Testing.Designer.cs">
-      <DependentUpon>201811161604525_Nevin Testing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191429308_adding.cs" />
-    <Compile Include="Migrations\201811191429308_adding.Designer.cs">
-      <DependentUpon>201811191429308_adding.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191437562_adding fk.cs" />
-    <Compile Include="Migrations\201811191437562_adding fk.Designer.cs">
-      <DependentUpon>201811191437562_adding fk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191725183_migrate.cs" />
-    <Compile Include="Migrations\201811191725183_migrate.Designer.cs">
-      <DependentUpon>201811191725183_migrate.cs</DependentUpon>
+    <Compile Include="Migrations\201811192004538_added cat to messageboard.cs" />
+    <Compile Include="Migrations\201811192004538_added cat to messageboard.Designer.cs">
+      <DependentUpon>201811192004538_added cat to messageboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -346,20 +334,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811161557118_add fk.resx">
-      <DependentUpon>201811161557118_add fk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811191907253_added DietCate.resx">
+      <DependentUpon>201811191907253_added DietCate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811161604525_Nevin Testing.resx">
-      <DependentUpon>201811161604525_Nevin Testing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191429308_adding.resx">
-      <DependentUpon>201811191429308_adding.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191437562_adding fk.resx">
-      <DependentUpon>201811191437562_adding fk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191725183_migrate.resx">
-      <DependentUpon>201811191725183_migrate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811192004538_added cat to messageboard.resx">
+      <DependentUpon>201811192004538_added cat to messageboard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
