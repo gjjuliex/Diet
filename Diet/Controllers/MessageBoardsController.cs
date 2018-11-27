@@ -6,6 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+//using Kendo.Mvc.UI.Fluent.ProgressBarBuilder;
+using System.Threading;
+using System.Globalization;
 using Diet.Models;
 
 namespace Diet.Controllers
@@ -219,6 +223,11 @@ namespace Diet.Controllers
         }
 
         public ActionResult Categories()
+        {
+            return View();
+        }
+
+        public ActionResult Test()
         {
             return View();
         }

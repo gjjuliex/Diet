@@ -9,7 +9,10 @@ namespace Diet.Models
     public class Goals
     {
         [Key]
+        public int GoalId { get; set; }
         public string LittleGoals { get; set; }
+        public string Goal { get; set; }
+
 
     }
 }

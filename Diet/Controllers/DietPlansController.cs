@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Diet.Models;
+using Nutritionix;
+using Json;
+using System.Web.Helpers;
 using Microsoft.AspNet.Identity;
 
 namespace Diet.Controllers
@@ -14,10 +17,14 @@ namespace Diet.Controllers
     public class DietPlansController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private const string myApiId = "33b34225";
+        private const string myApiKey = "c9a2e6a2b61c0ada42aed49f7b72c3d3";
 
         // GET: DietPlans
         public ActionResult Index()
         {
+            SearchResult[] myResults = NutritionixSearchResult("Chocolate");
+
             //return View(db.DietPlan.ToList());
             var dietPlan = db.DietPlan.ToList();
             return View(dietPlan);
@@ -44,7 +51,7 @@ namespace Diet.Controllers
         // GET: DietPlans/Create
         public ActionResult Create()
         {
-            ViewBag.nutrionalKey = ApiKeys.nutritionKey;
+           
             return View();
         }
 
@@ -52,6 +59,7 @@ namespace Diet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,CalorieLimit,PotentialFood,Food,Calories,MaxCal,MinCal")] DietPlan dietPlan)
         {
+
             if (ModelState.IsValid)
             {
                 string currentUserId = User.Identity.GetUserId();
@@ -120,5 +128,35 @@ namespace Diet.Controllers
         //    var calorieCounter = db.DietPlan.Where(c => c.Calories == Calories).Select()
 
         //}
-    }
+
+        //TEST NUTRITIONIX
+
+      
+
+        public SearchResult[] NutritionixSearchResult(string query)
+        {
+            
+                var nutritionix = new NutritionixClient();
+                nutritionix.Initialize(myApiId, myApiKey);
+
+                var request = new SearchRequest { Query = query };
+                SearchResponse response = nutritionix.SearchItems(request);
+
+                return response.Results;
+           
+
+            //var request = new NutritionixSearchRequest /* { Query = query };*/
+            //NutritionixSearchResponse response = nutritionix.SearchItems(request);
+
+            //return response.Results;
+        }
+  
+            //public ActionResult NutritionixItemRetrieve(string id)
+            //{
+            //    var nutritionix = new NutritionixClient();
+            //    nutritionix.Initialize(myApiId, myApiKey);
+
+            //    return nutritionix.RetrieveItem(id);
+            //}
+        }
 }

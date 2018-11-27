@@ -1,0 +1,34 @@
+﻿@model Diet.Models.Goals
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Goals</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LittleGoals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LittleGoals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GoalId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

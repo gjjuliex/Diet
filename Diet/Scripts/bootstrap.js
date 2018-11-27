@@ -1047,7 +1047,8 @@ if (typeof jQuery === 'undefined') {
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
-        .one('bsTransitionEnd', $.proxy(this.hideModal, this))
+        .one('bsTransitionEnd', $.proxy(this.hi
+dal, this))
         .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
       this.hideModal()
   }
