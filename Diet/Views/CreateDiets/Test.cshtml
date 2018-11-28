@@ -1,0 +1,27 @@
+﻿
+<form class="form-horizontal" id="searchForm">
+    <h2>Search Nutrition</h2>
+    <div>
+        <input id="nutritionixsearchbox" value="" list="autocomplete" type="search" onkeyup="SearchNutritionix();" /> <intput type="button" onclick="SearchNutritionix()" value="Search!">
+    </div>
+    <datalist id="autocomplete">
+        <option value="Chocolate">Chocolate</option>
+        <option value="Cherry">Cherry</option>
+        <option value="Banana">Banana</option>
+    </datalist>
+    <iframe id="nutritionixsearchpage" src="about:blank" width="95%" height="840" frameborder="0"></iframe>
+</form>
+<script>
+    function SearchNutritionix() {
+        "use strict";
+        //Get value from input
+        var searchvalue = document.getElementById("nutritionixsearchbox").value;
+        console.log("Searching Nutritionix for: " + searchvalue); //confirm value
+        //Set src attribute value of iframe element to concatenated url + search value
+        document.getElementById("nutritionixsearchpage").setAttribute("src", "http://www.nutritionix.com/search?q=" + searchvalue);
+    }
+    ////Binding onclick event to button rather than using onclick="" on button element
+    //$("#searchbutton").click(function callSearchFunction() {
+    //    SearchNutritionix();
+    //});
+</script>

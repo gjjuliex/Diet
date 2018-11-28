@@ -123,5 +123,10 @@ namespace Diet.Controllers
             }
             base.Dispose(disposing);
         }
+        
+        public ActionResult Progress ()
+        {
+            return View();
+        }
     }
 }

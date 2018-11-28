@@ -23,8 +23,7 @@ namespace Diet.Controllers
         // GET: DietPlans
         public ActionResult Index()
         {
-            SearchResult[] myResults = NutritionixSearchResult("Chocolate");
-
+            NutritionixSearchResult("Chocolate");
             //return View(db.DietPlan.ToList());
             var dietPlan = db.DietPlan.ToList();
             return View(dietPlan);
@@ -51,7 +50,7 @@ namespace Diet.Controllers
         // GET: DietPlans/Create
         public ActionResult Create()
         {
-           
+
             return View();
         }
 
@@ -129,34 +128,33 @@ namespace Diet.Controllers
 
         //}
 
+
         //TEST NUTRITIONIX
-
-      
-
-        public SearchResult[] NutritionixSearchResult(string query)
+        public SearchResult[] NutritionixSearchResult(string searchInput)
         {
-            
-                var nutritionix = new NutritionixClient();
-                nutritionix.Initialize(myApiId, myApiKey);
-
-                var request = new SearchRequest { Query = query };
-                SearchResponse response = nutritionix.SearchItems(request);
-
-                return response.Results;
-           
-
-            //var request = new NutritionixSearchRequest /* { Query = query };*/
-            //NutritionixSearchResponse response = nutritionix.SearchItems(request);
-
-            //return response.Results;
+            var nutritionix = new NutritionixClient();
+            nutritionix.Initialize(myApiId, myApiKey);
+            var request = new SearchRequest { Query = searchInput };
+            SearchResponse response = nutritionix.SearchItems(request);
+            return response.Results;
         }
-  
-            //public ActionResult NutritionixItemRetrieve(string id)
-            //{
-            //    var nutritionix = new NutritionixClient();
-            //    nutritionix.Initialize(myApiId, myApiKey);
 
-            //    return nutritionix.RetrieveItem(id);
-            //}
+        //public ActionResult NutritionixItemRetrieve(string id)
+        //{
+        //    var nutritionix = new NutritionixClient();
+        //    nutritionix.Initialize(myApiId, myApiKey);
+
+        //    return nutritionix.RetrieveItem(id);
+        //}
+        //TODO: Get the value of the results
+        //Store the results into the viewbag for IndexNutri.cshtml page
+        //ViewBag.SearchResults = myResults;
+
+        ////Go to IndexNutri.cshtml View Search Results page
+        //return View();
+        public ActionResult IndexNutri()
+        {
+            return View();
         }
+    }
 }
