@@ -233,6 +233,14 @@
     <Compile Include="Migrations\201811261522099_goals.Designer.cs">
       <DependentUpon>201811261522099_goals.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811281420550_adding goals.cs" />
+    <Compile Include="Migrations\201811281420550_adding goals.Designer.cs">
+      <DependentUpon>201811281420550_adding goals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811281431595_fD.cs" />
+    <Compile Include="Migrations\201811281431595_fD.Designer.cs">
+      <DependentUpon>201811281431595_fD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApiKeys.cs" />
@@ -417,6 +425,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811261522099_goals.resx">
       <DependentUpon>201811261522099_goals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281420550_adding goals.resx">
+      <DependentUpon>201811281420550_adding goals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281431595_fD.resx">
+      <DependentUpon>201811281431595_fD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

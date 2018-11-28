@@ -10,7 +10,8 @@ namespace Diet.Models
     {
         [Key]
         public int GoalId { get; set; }
-        public string LittleGoals { get; set; }
+        public string LittleGoals{ get; set; }
+  
         public string Goal { get; set; }
 
 
